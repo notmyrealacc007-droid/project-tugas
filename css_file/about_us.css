@@ -1,0 +1,15 @@
+.page-title {
+  text-align: center;
+  padding: 28px 0;
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.Logo-img {
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
