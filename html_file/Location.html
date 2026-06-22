@@ -40,7 +40,7 @@
 </header>
 
 <!---Jumbotron-->
-<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+<div class="p-5 mb-4 location-hero rounded-3">
    <div class="container-fluid py-5">
    <h1 class="display-5 fw-bold">Lokasi Sapphire Hotel Palace</h1>
    <p class="col-md-8 fs-4">Temukan lokasi dan kontak kami di halaman ini. Hanya di halaman Location saja ada Google Maps.</p>
@@ -59,6 +59,173 @@
      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7978.798229083175!2d108.85832799999996!3d0.8305743499999968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31e30afddad244cb%3A0xa59fc62511c84f49!2sKura%20Kura%20Beach!5e0!3m2!1sen!2sid!4v1781090083269!5m2!1sen!2sid" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
    </div>
  </div>
+
+<!-- Ulasan dan Rating Interaktif -->
+<div class="container my-5" id="reviews-section">
+  <div class="row g-4 align-items-start">
+    <div class="col-lg-4">
+      <div class="card shadow-sm h-100">
+        <div class="card-body">
+          <h5 class="card-title">Rating dan Ulasan</h5>
+          <div class="d-flex align-items-center mb-3">
+            <div class="display-4 text-primary me-3" id="avg-rating">0.0</div>
+            <div>
+              <div class="text-muted" id="total-reviews">Dari 0 ulasan</div>
+              <div class="text-warning" id="avg-stars" style="font-size:1.2rem; line-height:1">
+                ★ ★ ★ ★ ★
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <span class="badge bg-success me-2">Pelayanan</span>
+            <span class="badge bg-info text-dark me-2">Kebersihan</span>
+            <span class="badge bg-warning text-dark">Kenyamanan</span>
+          </div>
+          <p class="card-text text-secondary">Tamu bisa memberikan rating dan ulasan langsung di bawah. Ulasan tersimpan di perangkat Anda.</p>
+          <div class="d-flex gap-3 align-items-center">
+            <button id="like-btn" class="btn btn-outline-primary btn-sm">Like</button>
+            <span class="text-muted" id="like-count">0 orang menyukai ini</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-8">
+      <div class="row g-4">
+        <div class="col-12">
+          <div class="card shadow-sm">
+            <div class="card-body">
+              <h6 class="card-title">Tulis Ulasan Anda</h6>
+              <form id="review-form">
+                <div class="mb-2">
+                  <label class="form-label">Nama</label>
+                  <input type="text" id="review-name" class="form-control" placeholder="Nama Anda" required>
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Rating</label>
+                  <div id="star-input" class="mb-1">
+                    <span class="star" data-value="1">☆</span>
+                    <span class="star" data-value="2">☆</span>
+                    <span class="star" data-value="3">☆</span>
+                    <span class="star" data-value="4">☆</span>
+                    <span class="star" data-value="5">☆</span>
+                  </div>
+                  <input type="hidden" id="review-rating" value="5">
+                </div>
+                <div class="mb-2">
+                  <label class="form-label">Ulasan</label>
+                  <textarea id="review-text" class="form-control" rows="3" placeholder="Tinggalkan ulasan Anda" required></textarea>
+                </div>
+                <div>
+                  <button class="btn btn-primary" type="submit">Kirim Ulasan</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12" id="reviews-list">
+          <!-- reviews render here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  #star-input .star{font-size:1.5rem;cursor:pointer;padding:0 4px;color:#ccc}
+  #star-input .star.selected{color:#ffc107}
+</style>
+
+<script>
+  (function(){
+    const STORAGE_KEY = 'hotel_reviews_v1';
+    const LIKES_KEY = 'hotel_likes_v1';
+
+    function getReviews(){
+      return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');
+    }
+    function saveReviews(arr){
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+    }
+
+    function getLikes(){
+      return parseInt(localStorage.getItem(LIKES_KEY)||'0',10);
+    }
+    function saveLikes(n){ localStorage.setItem(LIKES_KEY, String(n)); }
+
+    function renderAggregate(){
+      const reviews = getReviews();
+      const total = reviews.length;
+      const avg = total? (reviews.reduce((s,r)=>s+r.rating,0)/total):0;
+      document.getElementById('avg-rating').textContent = avg? avg.toFixed(1):'0.0';
+      document.getElementById('total-reviews').textContent = 'Dari '+total+' ulasan';
+      const stars = Math.round(avg);
+      const starEl = document.getElementById('avg-stars');
+      starEl.textContent = Array(5).fill(0).map((_,i)=> i<stars? '★':'☆').join(' ');
+      document.getElementById('like-count').textContent = getLikes() + ' orang menyukai ini';
+    }
+
+    function renderList(){
+      const container = document.getElementById('reviews-list');
+      const reviews = getReviews().slice().reverse();
+      if(reviews.length===0){ container.innerHTML = '<p class="text-muted">Belum ada ulasan. Jadilah yang pertama!</p>'; return; }
+      container.innerHTML = reviews.map(r=>{
+        return `
+          <div class="card shadow-sm mb-3">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-2">
+                <h6 class="card-title mb-0">${escapeHtml(r.name)}</h6>
+                <small class="text-warning">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</small>
+              </div>
+              <p class="text-muted mb-2">${escapeHtml(r.time)}</p>
+              <p class="card-text">${escapeHtml(r.text)}</p>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function escapeHtml(s){ return String(s||'').replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+
+    // star input handling
+    document.addEventListener('click', function(e){
+      if(e.target.matches('#star-input .star')){
+        const val = parseInt(e.target.getAttribute('data-value'),10)||5;
+        document.getElementById('review-rating').value = val;
+        document.querySelectorAll('#star-input .star').forEach(s=>{
+          s.classList.toggle('selected', parseInt(s.getAttribute('data-value'),10) <= val);
+        });
+      }
+    });
+
+    // form submit
+    document.getElementById('review-form').addEventListener('submit', function(ev){
+      ev.preventDefault();
+      const name = document.getElementById('review-name').value.trim();
+      const rating = parseInt(document.getElementById('review-rating').value,10)||5;
+      const text = document.getElementById('review-text').value.trim();
+      if(!name||!text) return alert('Isi nama dan ulasan terlebih dahulu.');
+      const reviews = getReviews();
+      reviews.push({name, rating, text, time: (new Date()).toLocaleString()});
+      saveReviews(reviews);
+      renderAggregate(); renderList();
+      document.getElementById('review-form').reset();
+      document.getElementById('review-rating').value = 5;
+      document.querySelectorAll('#star-input .star').forEach(s=>s.classList.remove('selected'));
+    });
+
+    // like button
+    document.getElementById('like-btn').addEventListener('click', function(){
+      let liked = sessionStorage.getItem('hotel_user_liked');
+      if(liked){ alert('Anda sudah menyukai hotel ini pada sesi ini.'); return; }
+      const n = getLikes() + 1; saveLikes(n); sessionStorage.setItem('hotel_user_liked','1');
+      renderAggregate();
+    });
+
+    // initial render
+    renderAggregate(); renderList();
+  })();
+</script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
  </div>

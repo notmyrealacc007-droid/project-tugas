@@ -1,11 +1,30 @@
 body {
-  background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);
+  background: linear-gradient(135deg, #e6f3ff 0%, #cfe9ff 25%, #b3deff 50%, #99d6ff 75%, #ffffff 100%);
   color: #0d2f5f;
   font-family: "Segoe UI", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(100, 200, 255, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(120, 180, 255, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 50% 0%, rgba(150, 210, 255, 0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .navbar {
   background-color: #ffffff !important;
+  box-shadow: 0 2px 8px rgba(31, 78, 121, 0.1);
+  border-bottom: 2px solid #e0ecf5;
 }
 
 .navbar-brand {
@@ -78,6 +97,15 @@ body {
 .hero-card {
   max-width: 1100px;
   margin: 24px auto;
+  box-shadow: 0 8px 24px rgba(31, 121, 184, 0.15);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid rgba(100, 180, 255, 0.3);
+}
+
+.hero-card .card {
+  border: none;
+  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
 }
 
 .Logo-img {
@@ -85,4 +113,79 @@ body {
   height: 400px;
   object-fit: cover;
   margin-left: 10px;
+}
+
+/* Styling untuk card section */
+.container {
+  position: relative;
+  z-index: 1;
+}
+
+.container h2 {
+  color: #0d3b66;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 2rem;
+  background: linear-gradient(135deg, #0d3b66 0%, #1f5a96 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.card {
+  border: 1px solid rgba(100, 180, 255, 0.4);
+  transition: all 0.3s ease;
+  background: linear-gradient(135deg, #ffffff 0%, #f5f9ff 100%);
+  box-shadow: 0 4px 12px rgba(31, 121, 184, 0.08);
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 28px rgba(31, 121, 184, 0.18);
+  border-color: rgba(31, 121, 184, 0.6);
+}
+
+.card-title {
+  color: #0d3b66;
+  font-weight: 600;
+}
+
+.card-text {
+  color: #2c5aa0;
+}
+
+.btn-outline-primary {
+  color: #1757b2 !important;
+  border-color: #1757b2 !important;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  background-color: #1757b2;
+  border-color: #1757b2;
+  color: #ffffff !important;
+}
+
+/* Decorative elements */
+.carousel {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(31, 121, 184, 0.12);
+}
+
+.carousel-caption {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+  padding: 2rem 1rem 1rem 1rem;
+}
+
+.carousel-control-prev, 
+.carousel-control-next {
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.carousel-control-prev:hover, 
+.carousel-control-next:hover {
+  opacity: 1;
 }
