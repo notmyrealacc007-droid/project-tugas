@@ -1,0 +1,210 @@
+:root {
+  --bg: #f4f7fb;
+  --card: #ffffff;
+  --text: #1f2937;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-dark: #1a62c8;
+  --border: #e5e7eb;
+  --shadow: 0 18px 50px rgba(15, 23, 42, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand {
+  color: #1f2533 !important;
+  font-weight: 600;
+}
+
+.nav-link {
+  color: #1f2533 !important;
+  font-weight: 600;
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--primary) !important;
+}
+
+.navbar .btn-outline-success {
+  color: #1f2533 !important;
+  border-color: #1f2533 !important;
+}
+
+.navbar .btn-outline-success:hover {
+  color: #ffffff !important;
+  background-color: #1f2533 !important;
+  border-color: #1f2533 !important;
+}
+
+.navbar .btn-primary {
+  background-color: var(--primary-dark);
+  border-color: #1757b2;
+}
+
+.navbar .btn-primary:hover {
+  background-color: #154b8d;
+  border-color: #103f72;
+}
+
+.btn-primary,
+.btn-outline-success {
+  border-radius: 30px;
+}
+
+.page-hero,
+.hero-card,
+.card {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  border-radius: 24px;
+}
+
+.page-hero {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 32px;
+}
+
+.page-hero h1 {
+  margin-bottom: 16px;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+}
+
+.page-hero p {
+  color: var(--muted);
+  max-width: 740px;
+}
+
+.hero-img {
+  width: 100%;
+  height: 420px;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+.hero-card {
+  max-width: 1100px;
+  margin: 32px auto;
+  overflow: hidden;
+}
+
+.hero-card .card-img-top {
+  height: 320px;
+  object-fit: cover;
+}
+
+.hero-card .card-body {
+  padding: 24px;
+}
+
+.hero-card .card-title {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.hero-card .card-text {
+  color: var(--muted);
+  margin-bottom: 18px;
+}
+
+.container.my-4 {
+  max-width: 1100px;
+}
+
+.card {
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 25px rgba(15, 23, 42, 0.06);
+}
+
+.card-body h5 {
+  font-size: 1.2rem;
+  margin-bottom: 0.75rem;
+}
+
+.card-body p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.carousel-caption {
+  background: rgba(15, 23, 42, 0.45);
+  border-radius: 16px;
+  padding: 18px;
+}
+
+.carousel-caption h5,
+.carousel-caption p {
+  color: #f8fafc;
+}
+
+.section-title {
+  max-width: 1100px;
+  margin: 0 auto 22px;
+  padding: 0 16px;
+}
+
+.section-title h2 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.section-title p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.btn-primary {
+  transition: background-color 0.25s ease;
+}
+
+@media (max-width: 992px) {
+  .page-hero,
+  .hero-card,
+  .container.my-4 {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-img {
+    height: 300px;
+  }
+
+  .hero-card {
+    margin: 24px auto;
+  }
+}
+
+/* Search box styling inside hero */
+.search-box {
+  max-width: 560px;
+}
+
+.search-box input[type="text"] {
+  border-radius: 30px;
+  padding: 12px 16px;
+}

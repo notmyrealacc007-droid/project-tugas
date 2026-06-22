@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sapphire Hotel Palace</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css_file/home_page.css">
+    <link rel="icon" href="../Image_file/Logo-hotel-clean-removebg-preview.png" type="image/png" sizes="32x32">
+  </head>
+  <body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><b>Sapphire Hotel Palace 🏰</b></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" aria-current="page" href="home_page.html">Home</a>
+        <a class="nav-link" href="about_us.html">About Us</a>
+        <a class="nav-link" href="Location.html">Location</a>
+        <a class="nav-link" href="reservasi.html">Reservasi</a>
+      </div>
+      <form class="d-flex ms-auto" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+        <a href="login.php" class="btn btn-primary ms-2">Login</a>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<main class="container">
+    <div class="container-fluid py-5">
+      <div class="container page-hero">
+        <p style="font-weight:700;color:var(--primary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase;font-size:0.82rem;">Sapphire Hotel Palace</p>
+        <h1>Selamat Datang di Sapphire Hotel Palace</h1>
+        <p>Menikmati kenyamanan terbaik dengan pilihan kamar eksklusif, fasilitas modern, dan layanan ramah sepanjang waktu.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
+          <a class="btn btn-primary" href="reservasi.html">Pesan Sekarang</a>
+          <a href="tipe_kamar.html" class="btn btn-outline-success">Lihat Tipe Kamar</a>
+        </div>
+        <div class="search-box mt-3">
+          <input type="text" class="form-control" placeholder="Discover Hotel or Location">
+        </div>
+      </div>
+    </div>
+
+    <!-- Hero carousel (manual arrows left/right) -->
+    <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="../Image_file/kamar-hotel-3.jpg" class="d-block w-100 hero-img" alt="Slide 1">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="display-5 fw-bold">Kamar Esquisite</h5>
+        <p>Kamar yang Nyaman Dan Indah</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../Image_file/pool-area.jpg" class="d-block w-100 hero-img" alt="Slide 2">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="display-5 fw-bold">Pool Area</h5>
+        <p>Area kolam renang yang indah dan nyaman.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="../Image_file/pantai-2.jpeg" class="d-block w-100 hero-img" alt="Slide 3">
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="display-5 fw-bold">Pantai resort</h5>
+        <p>Pantai yang indah dan nyaman untuk bersantai.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<!-- Example card area below hero -->
+<div class="hero-card">
+  <div class="card">
+    <img src="https://via.placeholder.com/1100x300?text=Card+Image" class="card-img-top" alt="Card image">
+    <div class="card-body">
+      <h5 class="card-title">Tipe Kamar </h5>
+      <p class="card-text">Kamar Kami Tersedia dari Tipe Standart Higga ke Tipe Suite</p>
+      <a href="tipe_kamar.html" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+</div>
+
+<section class="section-title">
+  <div>
+    <h2>Tipe Kamar Pilihan</h2>
+    <p>Kami menawarkan kamar untuk pasangan, keluarga, dan perjalanan bisnis dengan kenyamanan maksimal.</p>
+  </div>
+</section>
+
+<div class="container my-4">
+  <div class="row g-3">
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../Image_file/Kamar-Honeymoon.webp" class="card-img-top" alt="HoneyMoon Room">
+        <div class="card-body">
+          <h5 class="card-title">HoneyMoon Package</h5>
+          <p class="card-text">Paket liburan romantis dengan suasana privat dan fasilitas mewah.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../Image_file/Kamar-Family.jpg" class="card-img-top" alt="Family Room">
+        <div class="card-body">
+          <h5 class="card-title">Family Fun Package</h5>
+          <p class="card-text">Ruang luas untuk keluarga lengkap dengan kenyamanan untuk semua anggota.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img src="../Image_file/Kamar-Luxury.png" class="card-img-top" alt="Business Room">
+        <div class="card-body">
+          <h5 class="card-title">Business Package</h5>
+          <p class="card-text">Cocok untuk perjalanan kerja dengan fasilitas pertemuan dan layanan cepat.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="hero-card">
+  <div class="card">
+    <img src="https://via.placeholder.com/1100x300?text=Card+Image" class="card-img-top" alt="Hotel Facilities">
+    <div class="card-body">
+      <h5 class="card-title">Tentang Hotel Kami</h5>
+      <p class="card-text">Sapphire Hotel Palace menghadirkan layanan berkualitas tinggi, fasilitas modern, dan pengalaman menginap yang menyenangkan.</p>
+      <a href="informasi.html" class="btn btn-primary">Pelajari Lebih Lanjut</a>
+    </div>
+  </div>
+</section>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  </body>
+</html>
