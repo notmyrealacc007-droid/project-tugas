@@ -198,3 +198,13 @@ a {
     margin: 24px auto;
   }
 }
+
+/* Search box styling inside hero */
+.search-box {
+  max-width: 560px;
+}
+
+.search-box input[type="text"] {
+  border-radius: 30px;
+  padding: 12px 16px;
+}

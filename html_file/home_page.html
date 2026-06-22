@@ -32,15 +32,20 @@
 </nav>
 
 <main class="container">
-    <section class="page-hero">
+    <div class="container-fluid py-5">
+      <div class="container page-hero">
         <p style="font-weight:700;color:var(--primary);margin-bottom:16px;letter-spacing:0.08em;text-transform:uppercase;font-size:0.82rem;">Sapphire Hotel Palace</p>
         <h1>Selamat Datang di Sapphire Hotel Palace</h1>
         <p>Menikmati kenyamanan terbaik dengan pilihan kamar eksklusif, fasilitas modern, dan layanan ramah sepanjang waktu.</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:24px;">
-            <a class="btn btn-primary" href="reservasi.html">Pesan Sekarang</a>
-            <a href="tipe_kamar.html" class="btn btn-outline-success">Lihat Tipe Kamar</a>
+          <a class="btn btn-primary" href="reservasi.html">Pesan Sekarang</a>
+          <a href="tipe_kamar.html" class="btn btn-outline-success">Lihat Tipe Kamar</a>
         </div>
-    </section>
+        <div class="search-box mt-3">
+          <input type="text" class="form-control" placeholder="Discover Hotel or Location">
+        </div>
+      </div>
+    </div>
 
     <!-- Hero carousel (manual arrows left/right) -->
     <div id="heroCarousel" class="carousel slide" data-bs-ride="false">
