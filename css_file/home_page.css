@@ -149,6 +149,133 @@ a {
   color: var(--muted);
 }
 
+/* Desain Biru Laut dengan Belang Putih */
+.page-hero.ocean-theme {
+  background: linear-gradient(135deg, #0C7C9E 0%, #156B8A 50%, #0A5B76 100%);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  border: none;
+  padding: 48px 32px;
+}
+
+.page-hero.ocean-theme::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 10px,
+    rgba(255, 255, 255, 0.1) 10px,
+    rgba(255, 255, 255, 0.1) 20px
+  );
+  pointer-events: none;
+}
+
+.page-hero.ocean-theme::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 120px;
+  background: 
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 40px,
+      rgba(255, 255, 255, 0.15) 40px,
+      rgba(255, 255, 255, 0.15) 80px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 15px,
+      rgba(255, 255, 255, 0.08) 15px,
+      rgba(255, 255, 255, 0.08) 30px
+    );
+  pointer-events: none;
+}
+
+.page-hero.ocean-theme > * {
+  position: relative;
+  z-index: 1;
+}
+
+.page-hero.ocean-theme p {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.page-hero.ocean-theme p[style*="color:var(--primary)"] {
+  color: #ffffff !important;
+  opacity: 0.9;
+  letter-spacing: 2px;
+  font-weight: 800;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.page-hero.ocean-theme h1 {
+  color: #ffffff;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+  font-weight: 700;
+}
+
+.page-hero.ocean-theme .btn-primary {
+  background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+  color: #0C7C9E;
+  border: 2px solid #ffffff;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.page-hero.ocean-theme .btn-primary:hover {
+  background: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.page-hero.ocean-theme .btn-outline-success {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.page-hero.ocean-theme .btn-outline-success:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.page-hero.ocean-theme .search-box {
+  margin-top: 32px;
+}
+
+.page-hero.ocean-theme .form-control {
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  color: #0C7C9E;
+  font-weight: 500;
+  border-radius: 30px;
+  padding: 12px 20px;
+}
+
+.page-hero.ocean-theme .form-control::placeholder {
+  color: rgba(12, 124, 158, 0.6);
+}
+
+.page-hero.ocean-theme .form-control:focus {
+  background: #ffffff;
+  border-color: #0C7C9E;
+  box-shadow: 0 0 0 0.2rem rgba(12, 124, 158, 0.25);
+  color: #0C7C9E;
+}
+
 .carousel-caption {
   background: rgba(15, 23, 42, 0.45);
   border-radius: 16px;
