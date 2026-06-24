@@ -32,7 +32,7 @@
 </nav>
 
 <!---Title dan Logo-->
-<header class="page-title">
+<header class="page-title animate-fade-up">
   <div class="container">
     <h1>Sepphire Hotel Palace</h1>
     <img src="../Image_file/Logo-hotel-clean.jpeg" class="Logo-img" alt="Logo Sapphire Hotel">
@@ -40,7 +40,7 @@
 </header>
 
 <!---Jumbotron-->
-<div class="p-5 mb-4 location-hero rounded-3">
+<div class="p-5 mb-4 location-hero rounded-3 animate-fade-up">
    <div class="container-fluid py-5">
    <h1 class="display-5 fw-bold">Lokasi Sapphire Hotel Palace</h1>
    <p class="col-md-8 fs-4">Temukan lokasi dan kontak kami di halaman ini. Hanya di halaman Location saja ada Google Maps.</p>
@@ -225,6 +225,23 @@
     // initial render
     renderAggregate(); renderList();
   })();
+</script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-up-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    document.querySelectorAll('.animate-fade-up').forEach(function(element) {
+      observer.observe(element);
+    });
+  });
 </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
