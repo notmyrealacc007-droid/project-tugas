@@ -32,7 +32,7 @@
 
 
 <!---Jumbotron-->
-<div class="p-5 mb-4 bg-body-tertiary rounded-3">
+<div class="p-5 mb-4 bg-body-tertiary rounded-3 animate-fade-up">
    <div class="container-fluid py-5">
    <h1 class="display-5 fw-bold">The Luxury Hotel Experience</h1>
    <p class="col-md-8 fs-4">Kami menyediakan pengalaman menginap yang luar biasa dengan pelayanan terbaik dan fasilitas modern.</p>
@@ -61,12 +61,28 @@
  </div>
 
     <!-- Back to Home Button -->
-    <div class="container mt-5 mb-5">
+    <div class="container mt-5 mb-5 animate-fade-up">
       <a href="home_page.html" class="btn btn-primary">
         <i class="bi bi-arrow-left"></i> Back to Home
       </a>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('fade-up-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.animate-fade-up').forEach(function(element) {
+          observer.observe(element);
+        });
+      });
+    </script>
   </body>
 </html>
