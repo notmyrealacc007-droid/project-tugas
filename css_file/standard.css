@@ -1,5 +1,51 @@
 @import url('home_page.css');
 
+body {
+  background: linear-gradient(135deg, #f8f9fa 0%, #eef4ff 100%);
+}
+
+header {
+  background: linear-gradient(135deg, #f7f9fc 0%, #e8f0ff 100%);
+}
+
+main .card {
+  border: none;
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+main .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(31, 60, 136, 0.15);
+}
+
+main .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+main .card-title {
+  color: #1f3c88;
+  font-weight: 700;
+}
+
+.btn-primary {
+  background-color: #1f3c88;
+  border-color: #1f3c88;
+}
+
+.btn-outline-primary {
+  color: #1f3c88;
+  border-color: #1f3c88;
+}
+
+.btn-outline-primary:hover,
+.btn-primary:hover {
+  background-color: #163166;
+  border-color: #163166;
+}
+
 .animate-fade-up {
   opacity: 0;
   transform: translateY(30px);
