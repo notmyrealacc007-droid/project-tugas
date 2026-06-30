@@ -164,9 +164,24 @@
                     </ul>
                 </div>
 
-                <form id="bookingForm" class="booking-form">
-                    <label for="roomType">Tipe Kamar</label>
-                    <select id="roomType" name="roomType" required>
+                <div class="booking-info-card">
+                    <h3>Form Reservasi</h3>
+                    <p>Isi data tamu dan pilih metode pembayaran. Form akan muncul sebagai popup untuk proses reservasi yang lebih mudah.</p>
+                    <button type="button" id="openBookingModal">Buka Form Reservasi</button>
+                </div>
+            </div>
+        </section>
+
+        <div class="modal-overlay hidden" id="bookingModal">
+            <div class="modal-content">
+                <button class="modal-close" id="closeBookingModal" aria-label="Tutup form">×</button>
+                <div class="modal-header">
+                    <h3>Popup Form Reservasi</h3>
+                    <p>Pilih tipe kamar, isi detail tamu, dan pilih metode pembayaran seperti QRIS.</p>
+                </div>
+                <form id="modalBookingForm" class="booking-form">
+                    <label for="modalRoomType">Tipe Kamar</label>
+                    <select id="modalRoomType" name="roomType" required>
                         <option value="Kamar Standar">Kamar Standar</option>
                         <option value="Kamar Superior">Kamar Superior</option>
                         <option value="Kamar Deluxe">Kamar Deluxe</option>
@@ -175,19 +190,19 @@
 
                     <div class="field-row">
                         <div>
-                            <label for="checkIn">Check-in</label>
-                            <input id="checkIn" name="checkIn" type="date" required>
+                            <label for="modalCheckIn">Check-in</label>
+                            <input id="modalCheckIn" name="checkIn" type="date" required>
                         </div>
                         <div>
-                            <label for="checkOut">Check-out</label>
-                            <input id="checkOut" name="checkOut" type="date" required>
+                            <label for="modalCheckOut">Check-out</label>
+                            <input id="modalCheckOut" name="checkOut" type="date" required>
                         </div>
                     </div>
 
                     <div class="field-row">
                         <div>
-                            <label for="guests">Jumlah Tamu</label>
-                            <select id="guests" name="guests" required>
+                            <label for="modalGuests">Jumlah Tamu</label>
+                            <select id="modalGuests" name="guests" required>
                                 <option value="1">1 Tamu</option>
                                 <option value="2">2 Tamu</option>
                                 <option value="3">3 Tamu</option>
@@ -195,68 +210,45 @@
                             </select>
                         </div>
                         <div>
-                            <label for="phone">No. HP</label>
-                            <input id="phone" name="phone" type="tel" placeholder="0812xxxx" required>
+                            <label for="modalPhone">No. HP</label>
+                            <input id="modalPhone" name="phone" type="tel" placeholder="0812xxxx" required>
                         </div>
                     </div>
 
-                    <label for="guestName">Nama Tamu</label>
-                    <input id="guestName" name="guestName" type="text" placeholder="Nama lengkap" required>
+                    <label for="modalGuestName">Nama Tamu</label>
+                    <input id="modalGuestName" name="guestName" type="text" placeholder="Nama lengkap" required>
 
-                    <label for="email">Email</label>
-                    <input id="email" name="email" type="email" placeholder="email@contoh.com" required>
+                    <label for="modalEmail">Email</label>
+                    <input id="modalEmail" name="email" type="email" placeholder="email@contoh.com" required>
 
-                    <label for="notes">Catatan Tambahan</label>
-                    <textarea id="notes" name="notes" placeholder="Permintaan khusus, sarapan, atau layanan ekstra"></textarea>
+                    <label for="modalNotes">Catatan Tambahan</label>
+                    <textarea id="modalNotes" name="notes" placeholder="Permintaan khusus, sarapan, atau layanan ekstra"></textarea>
+
+                    <fieldset class="payment-methods">
+                        <legend>Pilih Metode Pembayaran</legend>
+                        <label><input type="radio" name="paymentMethod" value="QRIS" checked> QRIS</label>
+                        <label><input type="radio" name="paymentMethod" value="Transfer Bank"> Transfer Bank</label>
+                        <label><input type="radio" name="paymentMethod" value="Bayar di Hotel"> Bayar di Hotel</label>
+                    </fieldset>
+
+                    <div id="paymentDetails" class="payment-details">
+                        <div class="qris-card">
+                            <div class="qris-label">QRIS</div>
+                            <div class="qris-code">Scan QRIS untuk membayar</div>
+                            <p>Nomor referensi: <strong>1234 5678 9012 3456</strong></p>
+                        </div>
+                    </div>
 
                     <button type="submit">Kirim Reservasi</button>
                 </form>
             </div>
-        </section>
+        </div>
     </main>
 
     <footer class="footer">
         &copy; 2026 Sapphire Hotel Palace. Website reservasi hotel tanpa backend.
     </footer>
 
-    <script>
-        const roomButtons = document.querySelectorAll('.room-body button');
-        const roomSelect = document.getElementById('roomType');
-        const bookingForm = document.getElementById('bookingForm');
-
-        roomButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                const room = button.getAttribute('data-room');
-                roomSelect.value = room;
-                document.getElementById('checkIn').focus();
-            });
-        });
-
-        bookingForm.addEventListener('submit', event => {
-            event.preventDefault();
-            const formData = new FormData(bookingForm);
-            const details = {
-                TipeKamar: formData.get('roomType'),
-                CheckIn: formData.get('checkIn'),
-                CheckOut: formData.get('checkOut'),
-                Tamu: formData.get('guests'),
-                Nama: formData.get('guestName'),
-                Email: formData.get('email'),
-                HP: formData.get('phone'),
-                Catatan: formData.get('notes') || '-'
-            };
-
-            alert(
-                `Reservasi terkirim!\n\n` +
-                `Tipe Kamar: ${details.TipeKamar}\n` +
-                `Check-in: ${details.CheckIn}\n` +
-                `Check-out: ${details.CheckOut}\n` +
-                `Tamu: ${details.Tamu}\n` +
-                `Nama: ${details.Nama}`
-            );
-            bookingForm.reset();
-        });
-    </script>
     <script src="../js_file/reservasi.js"></script>
 </body>
 </html>
