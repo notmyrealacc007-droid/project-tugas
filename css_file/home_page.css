@@ -145,7 +145,20 @@ a {
   width: 100%;
   height: 420px;
   object-fit: cover;
-  border-radius: 18px;
+}
+
+#heroCarousel {
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 28px 90px rgba(15, 23, 42, 0.18);
+}
+
+#heroCarousel .carousel-item img {
+  border-radius: 0;
+}
+
+#heroCarousel .carousel-caption {
+  text-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
 }
 
 .hero-card {
@@ -193,9 +206,9 @@ a {
   color: var(--muted);
 }
 
-/* Desain Biru Laut dengan Belang Putih */
+/* Desain Biru Tua dengan Background Putih-Hitam Sedikit */
 .page-hero.ocean-theme {
-  background: linear-gradient(135deg, #0C7C9E 0%, #156B8A 50%, #0A5B76 100%);
+  background: linear-gradient(135deg, #0b2a4a 0%, #143d66 50%, #1d4f7a 100%);
   color: #ffffff;
   position: relative;
   overflow: hidden;
@@ -204,44 +217,10 @@ a {
 }
 
 .page-hero.ocean-theme::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: repeating-linear-gradient(
-    45deg,
-    transparent,
-    transparent 10px,
-    rgba(255, 255, 255, 0.1) 10px,
-    rgba(255, 255, 255, 0.1) 20px
-  );
-  pointer-events: none;
-}
-
-.page-hero.ocean-theme::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 120px;
-  background: 
-    repeating-linear-gradient(
-      90deg,
-      transparent,
-      transparent 40px,
-      rgba(255, 255, 255, 0.15) 40px,
-      rgba(255, 255, 255, 0.15) 80px
-    ),
-    repeating-linear-gradient(
-      -45deg,
-      transparent,
-      transparent 15px,
-      rgba(255, 255, 255, 0.08) 15px,
-      rgba(255, 255, 255, 0.08) 30px
-    );
+  inset: 0;
+  background: linear-gradient(120deg, rgba(255,255,255,0.06), rgba(0,0,0,0.16));
   pointer-events: none;
 }
 
@@ -270,7 +249,7 @@ a {
 
 .page-hero.ocean-theme .btn-primary {
   background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
-  color: #0C7C9E;
+  color: #0b2a4a;
   border: 2px solid #ffffff;
   font-weight: 600;
   transition: all 0.3s ease;
