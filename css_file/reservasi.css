@@ -36,6 +36,9 @@ header {
 
 .navbar {
   background-color: #ffffff !important;
+  min-height: 80px;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 .navbar-brand {
