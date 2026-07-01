@@ -53,12 +53,14 @@ a {
 .navbar {
   background-color: #ffffff !important;
   border-bottom: 1px solid var(--border);
-  position: relative;
+  position: sticky;
+  top: 0;
   z-index: 1000;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
   min-height: 80px;
   padding-top: 16px;
   padding-bottom: 16px;
+  backdrop-filter: blur(8px);
 }
 
 .navbar-brand {
@@ -69,11 +71,36 @@ a {
 .nav-link {
   color: #1f2533 !important;
   font-weight: 600;
+  padding: 10px 14px;
+  border-radius: 999px;
+  transition: all 0.25s ease;
+  position: relative;
 }
 
-.nav-link.active,
-.nav-link:hover {
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 6px;
+  height: 2px;
+  background: var(--primary);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
   color: var(--primary) !important;
+  background: rgba(37, 99, 235, 0.08);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
+  transform: translateY(-2px);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: scaleX(1);
 }
 
 .navbar .btn-outline-success {
